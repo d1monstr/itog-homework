@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "ru.appline.frameworks.ozon.utils.MyAllureListener"},
+        plugin = {"pretty"},
         glue = {"steps"},
         features = {"src/test/resources/"},
         tags = "@all"

@@ -12,7 +12,7 @@ public class ManagerPages {
 
     private static StartPage startPage;
     private static SearchPage searchPage;
-//    private static ContributionsPage contributionsPage;
+    private static CartPage cartPage;
 //    private static CardsPage cardsPage;
 //    private static LoansPage loansPage;
 
@@ -44,6 +44,15 @@ public class ManagerPages {
         return searchPage;
     }
 
+    public CartPage getCartPage() {
+        if (cartPage == null) {
+            cartPage = new CartPage();
+            listPages.add(cartPage);
+
+        }
+        return cartPage;
+    }
+
 //    public ContributionsPage getContributionsPage() {
 //        if (contributionsPage == null) {
 //            contributionsPage = new ContributionsPage();
@@ -71,8 +80,10 @@ public class ManagerPages {
 
     public static void deletePages(){
         for (int i = 0; i < listPages.size(); i++){
-            listPages.remove(i);
+            listPages.set(i, null);
         }
+        managerPages = null;
+        listPages.clear();
     }
 
 }

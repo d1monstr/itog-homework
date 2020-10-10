@@ -44,10 +44,10 @@ public class BasePage {
         return wait.until(ExpectedConditions.not(ExpectedConditions.attributeToBe(element, attribute, beforeValue)));
     }
 
-    public boolean isElementPresent(String xpath) {
+    public boolean isElementPresentIn(WebElement element, String xpath) {
         getDriver().manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
         try {
-            getDriver().findElement(By.xpath(xpath));
+            element.findElement(By.xpath(xpath));
             return true;
         } catch (NoSuchElementException e) {
             return false;
