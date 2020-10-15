@@ -50,13 +50,18 @@ public class CartPage extends BasePage {
         WebElement productTitle, productPrice;
         for (WebElement productBlock : listProductsInCart){
             productTitle = productBlock.findElement(By.xpath(".//a/span"));
+            boolean finded = false;
             productPrice = productBlock.findElement(By.xpath(".//div[contains(@style, 'bold')]/span"));
             for (Product product : getCart().getListPoducts()){
-                if (productTitle.getText().trim().equals(product.getProductName())){
-                    Assert.assertEquals("Цена продукта " + product.getProductName() + " в корзине не совпадает с записаной ранее", cleanNumber(product.getPrice()), cleanNumber(productPrice.getText()));
+                if (productTitle.getText().trim().equals(product.getProductName()) && cleanNumber(product.getPrice()).equals(cleanNumber(productPrice.getText()))){
+                    finded = true;
                     break;
                 }
             }
+            if (finded){
+                continue;
+            }
+            Assert.fail("Добавленный товар в корзину не найден в списке записаных товаров: " + productTitle.getText().trim() + " с ценой: " + cleanNumber(productPrice.getText()));
         }
         return this;
     }

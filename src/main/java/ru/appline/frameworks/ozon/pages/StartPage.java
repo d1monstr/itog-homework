@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class StartPage extends BasePage {
@@ -23,6 +24,7 @@ public class StartPage extends BasePage {
         searchButton.click();
         elementToBeVisible(blockSearchResult);
         return app.getSearchPage();
+
     }
 
 }
